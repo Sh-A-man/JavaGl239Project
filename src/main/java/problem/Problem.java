@@ -1,7 +1,10 @@
 package problem;
 
 import javax.media.opengl.GL2;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
