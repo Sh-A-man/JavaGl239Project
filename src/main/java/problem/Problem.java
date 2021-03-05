@@ -137,5 +137,10 @@ public class Problem {
         for (Point point : points) {
             point.render(gl);
         }
+        //Figures.renderLine(gl, newVector2(0, 1) , newVector(-0,0), 1);
+        //Figures.renderTriangle(gl,newVector2(-0.9,0),newVector(-0,0),1),newVector2(0.4,0.5), false);
+        //Figures.renderQuad(gl,newVector2(-0.9,0),newVector(-0,0),1),newVector2(0.4,0.5), false);
+
+
     }
 }
