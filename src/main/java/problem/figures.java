@@ -42,6 +42,7 @@ public class figures {
         gl.glVertex2d(pos3.x, pos3.y);
         gl.glEnd();
     }
+
     public static void renderQuad(GL2 gl, Vector2 pos1, Vector2 pos2, Vector2 pos3, Vector2 pos4, boolean filled) {
         if (filled) {
             gl.glBegin(GL.GL_TRIANGLE_FAN);
@@ -78,6 +79,9 @@ public class figures {
             double y = r * Math.sin(a);
             gl.glVertex2d(x, y);
         }
-        gl.glEnd();
+        gl.glEnd();}
 
-            }}
+}
+
+
+

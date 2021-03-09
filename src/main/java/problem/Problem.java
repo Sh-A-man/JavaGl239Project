@@ -140,6 +140,8 @@ public class Problem {
         //Figures.renderLine(gl, newVector2(0, 1) , newVector(-0,0), 1);
         //Figures.renderTriangle(gl,newVector2(-0.9,0),newVector(-0,0),1),newVector2(0.4,0.5), false);
         //Figures.renderQuad(gl,newVector2(-0.9,0),newVector(-0,0),1),newVector2(0.4,0.5), false);
+        //Figures.renderCircle(gl, new Vector2(0, 0), 0.5, filed false);
+        //Figures.renderParabola(gl, new Vector2);
 
 
     }
