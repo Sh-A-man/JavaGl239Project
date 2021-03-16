@@ -137,11 +137,13 @@ public class Problem {
         for (Point point : points) {
             point.render(gl);
         }
-        //Figures.renderLine(gl, newVector2(0, 1) , newVector(-0,0), 1);
-        //Figures.renderTriangle(gl,newVector2(-0.9,0),newVector(-0,0),1),newVector2(0.4,0.5), false);
-        //Figures.renderQuad(gl,newVector2(-0.9,0),newVector(-0,0),1),newVector2(0.4,0.5), false);
-        //Figures.renderCircle(gl, new Vector2(0, 0), 0.5, filed false);
+        //Figures.renderLine(gl, new Vector2(0.5, 1),new Vector2(0.6,0), 1);
+        Figures.renderTriangle(gl,new Vector2(-0.9,0),new Vector2(-0,0),1),new Vector2(0.4,0.5), false);
+        //Figures.renderQuad(gl,new Vector2(-0.9,0),new Vector(-0,0),1),new Vector2(0.4,0.5), false);
+        //Figures.renderCircle(gl, new Vector2(0, 0), 0.5, field false);
         //Figures.renderParabola(gl, new Vector2);
+        //Parabola p = new Parabola(new Vector2(0.25, 0) , new Vector2(0, 0));
+        //Parabola.renderParabola (gl, new Vector2(0.25, 0) , new Vector2(0, 0), false);
 
 
     }
