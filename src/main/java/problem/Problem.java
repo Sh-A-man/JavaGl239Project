@@ -138,12 +138,12 @@ public class Problem {
             point.render(gl);
         }
         //Figures.renderLine(gl, new Vector2(0.5, 1),new Vector2(0.6,0), 1);
-        Figures.renderTriangle(gl,new Vector2(-0.9,0),new Vector2(-0,0),1),new Vector2(0.4,0.5), false);
+        //Figures.renderTriangle(gl,new Vector2(-0.9,0),new Vector2(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderQuad(gl,new Vector2(-0.9,0),new Vector(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderCircle(gl, new Vector2(0, 0), 0.5, field false);
         //Figures.renderParabola(gl, new Vector2);
-        //Parabola p = new Parabola(new Vector2(0.25, 0) , new Vector2(0, 0));
-        //Parabola.renderParabola (gl, new Vector2(0.25, 0) , new Vector2(0, 0), false);
+        Parabola p = new Parabola(new Vector2(0, 0.8) , new Vector2(0, 0));
+        Parabola.renderParabola(gl, p.F, p.v0);
 
 
     }
