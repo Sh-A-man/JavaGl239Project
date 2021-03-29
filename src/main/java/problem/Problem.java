@@ -60,22 +60,22 @@ public class Problem {
     public void solve() {
             ArrayList<Vector> vectors;
         // перебираем пары точек
+        double s0 = 0;
         for (Parabola p1: parabolas) {
             for (Parabola p2:parabolas) {
-                if(p1!=p2){
+                    if ((p2.b-p1.b),2)-4(p1.a-p2.a)(p1.c-p2.c) > 0) {
                     double x11 = (p2.b-p1.b+Math.sqrt(Math.abs((p2.b-p1.b),2)-4(p1.a-p2.a)(p1.c-p2.c)))/(2*(p1.a-p2.a));
                     double x22 = (p2.b-p1.b-Math.sqrt(Math.abs((p2.b-p1.b),2)-4(p1.a-p2.a)(p1.c-p2.c)))/(2*(p1.a-p2.a));
                     double y11 = p1.a*x11*x11+p1.b*x11+p1.c;
                     double y22 = p2.a*x22*x22+p2.b*x22+p2.c;
-                    if(x11!=x22){
-                        vectors.add(new Vector(x11,y11));
-                        vectors.add(new Vector(x22,y22));
                     }
-                                        }
-                }
+                    double s = Math.abs(((x22, 3)-(x11, 3))*(p2.a-p1.a)/3 + ((x22, 2)-(x11, 2))*(p2.b-p1.b)/2 + (x22-x11)*(p2.c-p1.c));
+                    if(s>s0) s0 = s;
             }
-        }
-    }
+                }
+        out.println(s0);
+            }
+        
 
     /**
      * Загрузить задачу из файла
