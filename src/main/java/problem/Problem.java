@@ -33,6 +33,7 @@ public class Problem {
      * список точек
      */
     private ArrayList<Point> points;
+    private ArrayList<Parabola> parabolas;
 
     /**
      * Конструктор класса задачи
@@ -57,16 +58,20 @@ public class Problem {
      * Решить задачу
      */
     public void solve() {
+            ArrayList<Vector> vectors;
         // перебираем пары точек
-        for (Point p : points) {
-            for (Point p2 : points) {
-                // если точки являются разными
-                if (p != p2) {
-                    // если координаты у них совпадают
-                    if (Math.abs(p.x - p2.x) < 0.0001 && Math.abs(p.y - p2.y) < 0.0001) {
-                        p.isSolution = true;
-                        p2.isSolution = true;
+        for (Parabola p1: parabolas) {
+            for (Parabola p2:parabolas) {
+                if(p1!=p2){
+                    double x11 = (p2.b-p1.b+Math.sqrt(Math.abs((p2.b-p1.b),2)-4(p1.a-p2.a)(p1.c-p2.c)))/(2*(p1.a-p2.a));
+                    double x22 = (p2.b-p1.b-Math.sqrt(Math.abs((p2.b-p1.b),2)-4(p1.a-p2.a)(p1.c-p2.c)))/(2*(p1.a-p2.a));
+                    double y11 = p1.a*x11*x11+p1.b*x11+p1.c;
+                    double y22 = p2.a*x22*x22+p2.b*x22+p2.c;
+                    if(x11!=x22){
+                        vectors.add(new Vector(x11,y11));
+                        vectors.add(new Vector(x22,y22));
                     }
+                                        }
                 }
             }
         }
@@ -120,7 +125,13 @@ public class Problem {
             points.add(p);
         }
     }
-
+    public void addRandomParabola(int n){
+        for (int i=0;i<n;i++){
+            Point a = Point.getRandomPoint();
+            Point b = Point.getRandomPoint();
+            parabolas.add(new Parabola(new Vector2(a.x,a.y), new Vector2(b.x,b.y)));
+        }
+    }
     /**
      * Очистить задачу
      */
@@ -137,14 +148,13 @@ public class Problem {
         for (Point point : points) {
             point.render(gl);
         }
+        for (Parabola p: parabolas){
+            p.render(gl);
+        }
         //Figures.renderLine(gl, new Vector2(0.5, 1),new Vector2(0.6,0), 1);
         //Figures.renderTriangle(gl,new Vector2(-0.9,0),new Vector2(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderQuad(gl,new Vector2(-0.9,0),new Vector(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderCircle(gl, new Vector2(0, 0), 0.5, field false);
         //Figures.renderParabola(gl, new Vector2);
-        Parabola p = new Parabola(new Vector2(0, 0.8) , new Vector2(0, 0));
-        Parabola.renderParabola(gl, p.F, p.v0);
-
-
     }
 }
