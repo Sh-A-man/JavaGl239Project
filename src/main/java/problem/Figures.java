@@ -54,8 +54,8 @@ public class Figures {
             gl.glVertex2d(pos3.x, pos3.y);
             gl.glColor3d(0, 1, 0);
             gl.glVertex2d(pos4.x, pos4.y);
-            gl.glEnd(); }
-        else {
+            gl.glEnd();
+        } else {
             gl.glBegin(GL.GL_LINE_STRIP);
             gl.glColor3d(0, 1, 0);
             gl.glVertex2d(pos1.x, pos1.y);
@@ -68,18 +68,35 @@ public class Figures {
             gl.glColor3d(0, 1, 0);
             gl.glVertex2d(pos4.x, pos4.y);
             gl.glEnd();
-        }}
-        public static void renderCircle(GL2 gl, Vector2 pos, double r, boolean filled ){
+        }
+    }
+
+    public static void renderCircle(GL2 gl, Vector2 pos, double r, boolean filled) {
         gl.glBegin(GL.GL_TRIANGLE_FAN);
         gl.glVertex2d(pos.x, pos.y);
         int n = 3600;
-        for (int i =1; i<n; i++) {
+        for (int i = 1; i < n; i++) {
             double a = (2 * Math.PI / n) * i;
             double x = r * Math.cos(a);
             double y = r * Math.sin(a);
             gl.glVertex2d(x, y);
         }
-        gl.glEnd();}
+        gl.glEnd();
+    }
+
+    public static void renderParabola(GL2 gl, Vector2 F, Vector2 v0) { // F-это фокус, v0-вершина
+
+        for (double i = -1; i < 1; i = i + 0.01) {
+            double a = F.y - v0.y;
+            double b = -2 * F.x * (F.y - v0.y);
+            double c = v0.y + (b * b) / (4 * a);
+            double y = a * i * i + b * i + c;
+            // y=ax^2+bx+c
+
+            gl.glVertex2d(i, y);
+        }
+        gl.glEnd();
+    }
 
 }
 
