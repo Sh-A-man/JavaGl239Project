@@ -40,18 +40,18 @@ public class Problem {
      */
     public Problem() {
         points = new ArrayList<>();
+        parabolas = new ArrayList<>();
     }
 
     /**
      * Добавить точку
      *
-     * @param x      координата X точки
-     * @param y      координата Y точки
-     * @param setVal номер множества
+     * @param x координата X точки
+     * @param y координата Y точки
      */
-    public void addPoint(double x, double y, int setVal) {
-        Point point = new Point(x, y, setVal);
-        points.add(point);
+    public void addPoint(double x, double y, double x2, double y2) {
+        Parabola point = new Parabola(new Vector2(x, y), new Vector2(x2, y2));
+        parabolas.add(point);
     }
 
     /**
@@ -77,7 +77,10 @@ public class Problem {
 
             }
         }
-        System.out.println(s0);
+        if(s0!=0)
+            System.out.println(s0);
+        else
+            System.out.println("Параболы не пересекаются");
     }
 
     /**
@@ -124,15 +127,16 @@ public class Problem {
      */
     public void addRandomParabolas(int n) {
         for (int i = 0; i < n; i++) {
-         Parabola p = Parabola.getRandomParabola();
-          parabolas.add(p);
+            Parabola p = Parabola.getRandomParabola();
+            parabolas.add(p);
         }
     }
-     public void addRandomPoints(int n) {
+
+    public void addRandomPoints(int n) {
         for (int i = 0; i < n; i++) {
-            Point p = Point.getRandomPoint();
-       points.add(p);
-    }
+            Parabola p = Parabola.getRandomParabola();
+            parabolas.add(p);
+        }
     }
 
 
@@ -141,6 +145,7 @@ public class Problem {
      */
     public void clear() {
         points.clear();
+        parabolas.clear();
     }
 
     /**
@@ -152,13 +157,16 @@ public class Problem {
         for (Point point : points) {
             point.render(gl);
         }
+
+        for (Parabola parabola : parabolas) {
+            parabola.render(gl);
+        }
         //Figures.renderLine(gl, new Vector2(0.5, 1),new Vector2(0.6,0), 1);
         //Figures.renderTriangle(gl,new Vector2(-0.9,0),new Vector2(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderQuad(gl,new Vector2(-0.9,0),new Vector(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderCircle(gl, new Vector2(0, 0), 0.5, field false);
         //Parabola p = new Parabola(new Vector2(0,0.8), new Vector2(0, 0));
-        Parabola.renderParabola(gl,  new Vector2 (0.3, 0.56), new Vector2 (0.3, 0.78));
-
+       // Parabola.renderParabola(gl, new Vector2(0, 1), new Vector2(0, -0.85));
 
 
     }

@@ -16,8 +16,8 @@ public class Form extends JFrame {
      */
     private JPanel GLPlaceholder;
     private JPanel root;
-    private JTextField xPointField;
-    private JTextField yPointField;
+    private JTextField x1Field;
+    private JTextField y1Field;
     private JButton randomBtn;
     private JTextField pointCntField;
     private JButton loadFromFileBtn;
@@ -26,8 +26,8 @@ public class Form extends JFrame {
     private JButton solveBtn;
     private JLabel problemText;
     private JButton addPoint;
-    private JRadioButton radioButton1;
-    private JRadioButton radioButton2;
+    private JTextField x2Field;
+    private JTextField y2Field;
     /**
      * таймер
      */
@@ -81,17 +81,16 @@ public class Form extends JFrame {
     private void initWidgets() {
         // задаём текст полю описания задачи
         problemText.setText("<html>" + Problem.PROBLEM_TEXT.replaceAll("\n", "<br>"));
-        // делаем первое радио выбранным
-        radioButton1.setSelected(true);
-        radioButton2.setSelected(false);
+
 
         addPoint.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double x = Double.parseDouble(xPointField.getText());
-                double y = Double.parseDouble(yPointField.getText());
-                int setVal = radioButton1.isSelected() ? Point.SET_1 : Point.SET_2;
-                renderer.problem.addPoint(x, y, setVal);
+                double x = Double.parseDouble(x1Field.getText());
+                double y = Double.parseDouble(y1Field.getText());
+                double x2 = Double.parseDouble(x2Field.getText());
+                double y2 = Double.parseDouble(y2Field.getText());
+                renderer.problem.addPoint(x, y, x2, y2);
             }
         });
         randomBtn.addActionListener(new ActionListener() {
@@ -141,4 +140,5 @@ public class Form extends JFrame {
     public static void main(String[] args) {
         new Form();
     }
+
 }

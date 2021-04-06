@@ -10,14 +10,16 @@ public class Parabola {
     Vector2 F;
     Vector2 v0;
     double p;
-    double a = F.y - v0.y;
-    double b = -2 * F.x * (F.y - v0.y);
-    double c = v0.y + (b * b) / (4 * a);
+    double a;
+    double b;
+    double c;
 
     public Parabola(Vector2 F, Vector2 v) {
         this.F = F;
         this.v0 = v;
-
+        a = F.y - v0.y;
+        b = -2 * F.x * (F.y - v0.y);
+        c = v0.y + (b * b) / (4 * a);
 
 
     }
@@ -38,33 +40,41 @@ public class Parabola {
     }
 
     public static Parabola getRandomParabola() {
-        Random randomParabola = new Random();
-        return new Parabola(
-                new Vector2(randomParabola.nextDouble() * 2 - 1, randomParabola.nextDouble() * 2 - 1),
-                new Vector2(randomParabola.nextDouble() * 2 - 1, randomParabola.nextDouble() * 2 - 1));
+        Random r = new Random();
+        double nx1 = (double) r.nextDouble() * 2 - 1;
+        double ny1 = (double) r.nextDouble() * 2 - 1;
+
+        double ny2 = (double) r.nextDouble() * 2 - 1;
+        return new Parabola(new Vector2(nx1, ny1), new Vector2(nx1, ny2));
+
+
+    }
+
+    public void render(GL2 gl) {
+        renderParabola(gl, F, v0);
     }
 
 
-        //for (int i = 1; i <= 2; i++) {
-          //  Point p = Point.getRandomPoint();
-            //if (i==1) {
-              //  F.x = p.x;
-               // F.y = p.y;
-                //v0.x = p.x; }
-            //if (i==2) {
-              //  v0.y = p.y; }
+    //for (int i = 1; i <= 2; i++) {
+    //  Point p = Point.getRandomPoint();
+    //if (i==1) {
+    //  F.x = p.x;
+    // F.y = p.y;
+    //v0.x = p.x; }
+    //if (i==2) {
+    //  v0.y = p.y; }
 
-        }
+}
 //        for (double i = -1; i < 1; i = i + 0.01) {
 //            double a = F.y - v0.y;
 //            double b = -2 * F.x * (F.y - v0.y);
 //            double c = v0.y + (b * b) / (4 * a);
 //            double y = a * i * i + b * i + c;
-            // y=ax^2+bx+c
+// y=ax^2+bx+c
 
-         //   gl.glVertex2d(i, y);
-       // }
-       // gl.glEnd();
+//   gl.glVertex2d(i, y);
+// }
+// gl.glEnd();
 
 
 
