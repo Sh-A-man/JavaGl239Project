@@ -13,6 +13,7 @@ public class Parabola {
     double a;
     double b;
     double c;
+    boolean IsSolve;
 
     public Parabola(Vector2 F, Vector2 v) {
         this.F = F;
@@ -38,7 +39,20 @@ public class Parabola {
         }
         gl.glEnd();
     }
+    public static void renderParabolacolour(GL2 gl, Vector2 F, Vector2 v0) { // F-это фокус, v0-вершина
 
+        for (double i = -1; i < 1; i = i + 0.01) {
+           double a = F.y - v0.y;
+            double b = -2 * F.x * (F.y - v0.y);
+            double c = v0.y + (b * b) / (4 * a);
+            double y = a * i * i + b * i + c;
+            gl.glColor3d(0, 1, 0);
+            // y=ax^2+bx+c
+
+            gl.glVertex2d(i, y);
+        }
+        gl.glEnd();
+    }
     public static Parabola getRandomParabola() {
         Random r = new Random();
         double nx1 = (double) r.nextDouble() * 2 - 1;
@@ -52,6 +66,13 @@ public class Parabola {
 
     public void render(GL2 gl) {
         renderParabola(gl, F, v0);
+
+    }
+    public void render1(GL2 gl) {
+
+        renderParabolacolour(gl, F, v0);}
+
+
     }
 
 
@@ -64,7 +85,7 @@ public class Parabola {
     //if (i==2) {
     //  v0.y = p.y; }
 
-}
+//}
 //        for (double i = -1; i < 1; i = i + 0.01) {
 //            double a = F.y - v0.y;
 //            double b = -2 * F.x * (F.y - v0.y);

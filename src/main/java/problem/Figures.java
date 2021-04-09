@@ -5,6 +5,8 @@ import javax.media.opengl.GL2;
 
 
 public class Figures {
+    Vector2 F;
+    Vector2 v0;
     public static void renderPoint(GL2 gl, Vector2 pos, float size) {
         gl.glPointSize(size);
         gl.glBegin(GL.GL_POINTS);
@@ -96,6 +98,24 @@ public class Figures {
             gl.glVertex2d(i, y);
         }
         gl.glEnd();
+    }
+    public static void renderParabolacolour(GL2 gl, Vector2 F, Vector2 v0) { // F-это фокус, v0-вершина
+
+        for (double i = -1; i < 1; i = i + 0.01) {
+            double a = F.y - v0.y;
+            double b = -2 * F.x * (F.y - v0.y);
+            double c = v0.y + (b * b) / (4 * a);
+            double y = a * i * i + b * i + c;
+            gl.glColor3d(0, 1, 0);
+            // y=ax^2+bx+c
+
+            gl.glVertex2d(i, y);
+        }
+        gl.glEnd();
+    }
+    public void render1(GL2 gl) {
+
+ renderParabolacolour(gl, F, v0);
     }
 
 }

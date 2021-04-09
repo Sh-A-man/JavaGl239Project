@@ -34,6 +34,7 @@ public class Problem {
      */
     private ArrayList<Point> points;
     private ArrayList<Parabola> parabolas;
+    private ArrayList<Parabola> parabolascolour;
 
     /**
      * Конструктор класса задачи
@@ -41,6 +42,7 @@ public class Problem {
     public Problem() {
         points = new ArrayList<>();
         parabolas = new ArrayList<>();
+        parabolascolour = new ArrayList<>();
     }
 
     /**
@@ -61,6 +63,9 @@ public class Problem {
         ArrayList<Vector2> vectors;
         // перебираем пары точек
         double s0 = 0;
+        Parabola P1;
+        Parabola P2;
+
         for (Parabola p1 : parabolas) {
             for (Parabola p2 : parabolas) {
                 if ((Math.pow((p2.b - p1.b), 2) - 4 * (p1.a - p2.a) * (p1.c - p2.c)) > 0) {
@@ -71,8 +76,17 @@ public class Problem {
                     if (Math.abs(x11) < 1 && Math.abs(x22) < 1 && Math.abs(y11) < 1 && Math.abs(y22) < 1) {
                         double s = Math.abs((Math.pow(x22, 3) - Math.pow(x11, 3)) * (p2.a - p1.a) / 3 + (Math.pow(x22, 2) - Math.pow(x11, 2)) * (p2.b - p1.b) / 2 + (x22 - x11) * (p2.c - p1.c));
 
-                        if (s > s0) s0 = s;
+                        if (s > s0) {
+                            s0 = s;
+                            P1 = p1;
+                            P2 = p2;
+
+
+                        }
+                        parabolascolour.add(p1);
+                        parabolascolour.add(p2);
                     }
+
                 }
 
             }
@@ -160,7 +174,12 @@ public class Problem {
 
         for (Parabola parabola : parabolas) {
             parabola.render(gl);
+
         }
+        for (Parabola parabola: parabolascolour){
+            parabola.render1(gl);
+        }
+
         //Figures.renderLine(gl, new Vector2(0.5, 1),new Vector2(0.6,0), 1);
         //Figures.renderTriangle(gl,new Vector2(-0.9,0),new Vector2(-0,0),1),new Vector2(0.4,0.5), false);
         //Figures.renderQuad(gl,new Vector2(-0.9,0),new Vector(-0,0),1),new Vector2(0.4,0.5), false);
@@ -170,4 +189,5 @@ public class Problem {
 
 
     }
+
 }
