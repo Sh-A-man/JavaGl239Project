@@ -35,7 +35,7 @@ public class Figures {
 
     public static void renderTriangle(GL2 gl, Vector2 pos1, Vector2 pos2, Vector2 pos3, float width) {
         gl.glLineWidth(width);
-        gl.glBegin(GL.GL_TRIANGLE_FAN);
+        gl.glBegin(GL2.GL_QUAD_STRIP);
         gl.glColor3d(0, 1, 0);
         gl.glVertex2d(pos1.x, pos1.y);
         gl.glColor3d(0.4, 1, 0.5);

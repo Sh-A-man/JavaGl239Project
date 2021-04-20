@@ -26,7 +26,6 @@ public class Parabola {
     }
 
     public static void renderParabola(GL2 gl, Vector2 F, Vector2 v0) { // F-это фокус, v0-вершина
-        gl.glColor3d(1, 1, 1);
         gl.glBegin(GL.GL_LINE_STRIP);
         for (double i = -1; i < 1; i = i + 0.01) {
             double a = F.y - v0.y;
@@ -39,14 +38,14 @@ public class Parabola {
         }
         gl.glEnd();
     }
-    public static void renderParabolacolour(GL2 gl, Vector2 F, Vector2 v0) { // F-это фокус, v0-вершина
+    public static void renderParabolacolour(GL2 gl, Vector2 F, Vector2 v0, double n) { // F-это фокус, v0-вершина
 
         for (double i = -1; i < 1; i = i + 0.01) {
            double a = F.y - v0.y;
             double b = -2 * F.x * (F.y - v0.y);
             double c = v0.y + (b * b) / (4 * a);
             double y = a * i * i + b * i + c;
-            gl.glColor3d(0, 1, 0);
+            gl.glColor3d(0, 1, n);
             // y=ax^2+bx+c
 
             gl.glVertex2d(i, y);
@@ -68,9 +67,9 @@ public class Parabola {
         renderParabola(gl, F, v0);
 
     }
-    public void render1(GL2 gl) {
+    public void render1(GL2 gl, double n) {
 
-        renderParabolacolour(gl, F, v0);}
+        renderParabolacolour(gl, F, v0, n);}
 
 
     }
